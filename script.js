@@ -15,12 +15,13 @@ carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 //button functions. add 1 to the counter when next button is clicked
 nextButton.addEventListener('click', () => {
-    
+    if (counter >= images.length-1) return;
     carousel.style.transition = "transform 0.4s ease-in-out"; 
     counter++;
     carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
 });
 prevButton.addEventListener('click', () => {
+    if (counter <= 0) return;
     carousel.style.transition = "transform 0.4s ease-in-out"; 
     counter--;
     carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
@@ -28,7 +29,7 @@ prevButton.addEventListener('click', () => {
 
 
 carousel.addEventListener('transitionend', () => {
-    
+
     if (images[counter].id === 'lastClone') {
     carousel.style.transition = "none";
     counter = images.length - 2;
