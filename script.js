@@ -1,36 +1,48 @@
-//create image slider
-const image1 = document.getElementById('image1'); 
-const image2 = document.getElementById('image2'); 
-const image3 = document.getElementById('image3'); 
 
+const carousel = document.querySelector('.images');
+const images = document.querySelectorAll('.images img');
+
+// select buttons 
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
 //make change image function that puts images in an array 
-let imageArray = ['image1', 'image2', 'image3']; 
 
-function changeImage() { 
-    for(i = 0; i < imageArray.length; i++) {
-       console.log(imageArray[i])
-    } 
-}
+let counter = 1;
+const size = images[0].clientWidth;
+
+carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
 
 
+//button functions. add 1 to the counter when next button is clicked
+nextButton.addEventListener('click', () => {
+    
+    carousel.style.transition = "transform 0.4s ease-in-out"; 
+    counter++;
+    carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
+});
+prevButton.addEventListener('click', () => {
+    carousel.style.transition = "transform 0.4s ease-in-out"; 
+    counter--;
+    carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
+});
 
-//setInterval(function () { 
-//changeImage();
-//}, 2000)
+
+carousel.addEventListener('transitionend', () => {
+    
+    if (images[counter].id === 'lastClone') {
+    carousel.style.transition = "none";
+    counter = images.length - 2;
+    carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+
+    if (images[counter].id === 'firstClone') {
+        carousel.style.transition = "none";
+        counter = images.length - counter;
+        carousel.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    }
+});
 
 //automatically moves fwd every 5 seconds 
-
-function showImage(name) {  
-    clearPrevious();
-    name.style.display="flex";
-}
-
-function clearPrevious() { 
-    image1.style.display = "none";
-    image2.style.display = "none";
-    image3.style.display = "none";
-}
-
 
 //navigation circles at the bottom that can be clicked
 
