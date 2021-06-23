@@ -28,7 +28,7 @@
       position: absolute; 
       top: 90%; 
       z-index: 10; 
-      left: 5%; 
+      left: 8%; 
       font-size: 30px; 
       color: black;
       opacity: 0.5; 
@@ -41,11 +41,17 @@
     position: absolute; 
     top: 90%; 
     z-index: 10; 
-    right: 5%; 
+    right: 8%; 
     font-size: 30px; 
     color: black;
     opacity: 0.5; 
     cursor: pointer; 
     height: 20px; 
     width: 40px; 
+  }
+
+  .selectors { 
+      position: absolute; 
+      left: 45%;
+      pointer-events: all;
   }
