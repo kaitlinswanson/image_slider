@@ -54,4 +54,6 @@
       position: absolute; 
       left: 45%;
       pointer-events: all;
+      opacity: 0.3; 
   }
+
